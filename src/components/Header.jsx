@@ -70,7 +70,7 @@ const MenuContainer = styled.div`
     padding-top: 4.2rem;
 
     width: 60vw;
-    height: 30vh;
+    height: 40vh;
 
     gap: .35rem;
 `
