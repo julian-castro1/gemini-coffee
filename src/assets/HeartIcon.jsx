@@ -13,8 +13,8 @@ const HeartIcon = ({ width = '24px', filled = false, onClick }) => {
     // Merged theme with defaults to handle undefined values
     const effectiveTheme = { ...defaultTheme, ...theme };
 
-    const fillColor = filled ? 'red' : 'none';
-    const borderColor = filled ? 'red' : effectiveTheme.color;
+    const fillColor = filled ? effectiveTheme.color : 'none';
+    const borderColor = effectiveTheme.color;
 
     const pathStyle = {
         fill: fillColor, // Fill color when filled is true, otherwise theme color
