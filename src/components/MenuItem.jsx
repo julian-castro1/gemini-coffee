@@ -1,7 +1,26 @@
 import styled from "styled-components";
 import HeartIcon from "../assets/HeartIcon";
+import { useState, useEffect } from "react";
 
 function MenuItem({name, price, description, longDesc, img, selected, onClick}){
+    // Initialize state with data from local storage if available
+    const [heart, changeHeart] = useState(() => {
+        const savedData = localStorage.getItem(name);
+        return savedData ? JSON.parse(savedData) : 'false';
+    });
+
+    // Update local storage when data changes
+    useEffect(() => {
+        localStorage.setItem(name, JSON.stringify(heart));
+    }, [heart]);
+
+    function toggleHeart(){
+        console.log('toggling heart');
+        changeHeart(heart == 'false' ? 'true' : 'false');
+    }
+
+    const filled = heart == 'true';
+
     function formatCurrency(num) {
         return new Intl.NumberFormat('en-US', {
             style: 'currency',
@@ -13,8 +32,8 @@ function MenuItem({name, price, description, longDesc, img, selected, onClick}){
     const currentlySel = selected == name;
 
     return(
-        <MenuItemContainer onClick={onClick}>
-            <CondesedDescContainer currentlySel={currentlySel}>
+        <MenuItemContainer>
+            <CondesedDescContainer currentlySel={currentlySel} onClick={onClick}>
                 <MenuItemImg src={img} currentlySel={currentlySel}/>
                 <DescContainer>
                     <MenuItemName>{name.toLowerCase()}</MenuItemName>
@@ -25,7 +44,7 @@ function MenuItem({name, price, description, longDesc, img, selected, onClick}){
             { currentlySel &&
                 <ExtendedDescContainer>
                     <ExtendedDesc>{longDesc.toLowerCase()}</ExtendedDesc>
-                    <HeartIcon width='23px' filled={false}/>
+                    <HeartIcon onClick={toggleHeart} width='23px' filled={filled}/>
                 </ExtendedDescContainer>
             }
         </MenuItemContainer>

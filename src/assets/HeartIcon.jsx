@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { ThemeContext } from 'styled-components';
 
-const HeartIcon = ({ width = '24px', filled = false }) => {
+const HeartIcon = ({ width = '24px', filled = false, onClick }) => {
     const theme = useContext(ThemeContext) || {};
 
     const defaultTheme = {
@@ -14,7 +14,7 @@ const HeartIcon = ({ width = '24px', filled = false }) => {
     const effectiveTheme = { ...defaultTheme, ...theme };
 
     const fillColor = filled ? 'red' : 'none';
-    const borderColor = effectiveTheme.color;
+    const borderColor = filled ? 'red' : effectiveTheme.color;
 
     const pathStyle = {
         fill: fillColor, // Fill color when filled is true, otherwise theme color
@@ -23,7 +23,7 @@ const HeartIcon = ({ width = '24px', filled = false }) => {
     };
 
     return (
-        <svg xmlns="http://www.w3.org/2000/svg" height={width} viewBox="-60 -60 550 500" width={width}>
+        <svg xmlns="http://www.w3.org/2000/svg" height={width} viewBox="-60 -60 550 500" width={width} onClick={onClick}>
           <g transform="matrix(1,0,0,1,-1944.24,-970.441)">
             <g transform="matrix(0.879591,0,0,1,233.618,0)">
                 <path 
