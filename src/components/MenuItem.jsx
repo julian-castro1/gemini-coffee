@@ -14,7 +14,8 @@ function MenuItem({name, price, description, longDesc, img, selected, onClick}){
         localStorage.setItem(name, JSON.stringify(heart));
     }, [heart]);
 
-    function toggleHeart(){
+    function toggleHeart(event){
+        event.stopPropagation();
         changeHeart(heart == 'false' ? 'true' : 'false');
     }
 
@@ -39,14 +40,14 @@ function MenuItem({name, price, description, longDesc, img, selected, onClick}){
                     <MenuItemDescription>{description.toLowerCase()}</MenuItemDescription>
                 </DescContainer>
                 <InfoContainer>
-                    {filled && <HeartIcon onClick={toggleHeart} width='13px' filled={filled}/>}
+                    {filled && <HeartIcon onClick={(event) => toggleHeart(event)} width='13px' filled={filled}/>}
                     <MenuItemPrice><span>{formatCurrency(price)}</span></MenuItemPrice>
                 </InfoContainer>
             </CondesedDescContainer>
             { currentlySel &&
                 <ExtendedDescContainer>
                     <ExtendedDesc>{longDesc.toLowerCase()}</ExtendedDesc>
-                    <HeartIcon onClick={toggleHeart} width='23px' filled={filled}/>
+                    <HeartIcon onClick={(event) => toggleHeart(event)} width='23px' filled={filled}/>
                 </ExtendedDescContainer>
             }
         </MenuItemContainer>
