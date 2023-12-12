@@ -41,7 +41,7 @@ const SignInButton = styled.div`
     padding-left: 1rem;
     padding-right: 1rem;
 
-    flex:1.5;
+    flex:1.3;
 
     background-color: ${props=>props.theme.back2};
     color: ${props=>props.theme.color};
@@ -70,7 +70,7 @@ const MenuContainer = styled.div`
     padding-top: 4.2rem;
 
     width: 60vw;
-    height: 40vh;
+    height: 38vh;
 
     gap: .35rem;
 `
