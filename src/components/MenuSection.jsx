@@ -106,6 +106,7 @@ const MenuContainer = styled.div`
 
     background-color: ${props=>props.theme.back2};
 
+    padding-bottom: 1.5rem;
     /* height: 70vh; */
 `
 const CoffeeSection = styled.div`
