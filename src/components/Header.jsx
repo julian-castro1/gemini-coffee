@@ -49,7 +49,7 @@ const SignInButton = styled.div`
     font-weight: 700;
 `
 const BurgerBack = styled.div`
-    background-color: ${props=>props.burgerOpen ? props.theme.color : props.theme.back1};
+    background-color: 'none';
     border-radius: 1rem;
     padding: .6rem;
 
@@ -97,9 +97,14 @@ const HeaderContainer = styled.div`
     justify-content: space-between;
     align-items: center;
 
-    margin: .25rem;
-    margin-left: 1rem;
-    margin-bottom: auto;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
+    padding-left: .75rem;
+
+    background-color: ${props=>props.theme.background};
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
 `
 
 export default Header;
