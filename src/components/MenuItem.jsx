@@ -39,7 +39,7 @@ function MenuItem({name, price, description, longDesc, img, selected, onClick}){
                     <MenuItemDescription>{description.toLowerCase()}</MenuItemDescription>
                 </DescContainer>
                 <InfoContainer>
-                    {filled && <HeartIcon onClick={toggleHeart} width='10px' filled={filled}/>}
+                    {filled && <HeartIcon onClick={toggleHeart} width='13px' filled={filled}/>}
                     <MenuItemPrice><span>{formatCurrency(price)}</span></MenuItemPrice>
                 </InfoContainer>
             </CondesedDescContainer>
