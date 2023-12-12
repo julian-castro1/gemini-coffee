@@ -8,7 +8,6 @@ function MenuSection(){
     const [selected, setSelected] = useState('');
 
     function handleClick(name){
-        console.log('clicked ' + name)
         if(name===selected){
             setSelected('');
         } else {

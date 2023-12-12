@@ -15,7 +15,6 @@ function MenuItem({name, price, description, longDesc, img, selected, onClick}){
     }, [heart]);
 
     function toggleHeart(){
-        console.log('toggling heart');
         changeHeart(heart == 'false' ? 'true' : 'false');
     }
 
