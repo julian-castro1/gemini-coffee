@@ -17,7 +17,7 @@ const HomeContainer = styled.div`
     align-items: center;
     /* justify-content: center; */
 
-    height: 75vh;
+    height: 80vh;
 
     color: ${props=>props.theme.color};
 
@@ -27,7 +27,7 @@ const GeminiText = styled.div`
     font-family: 'Megrim', sans-serif;
     font-size: 4rem;
 
-    margin-top:25vh;
+    margin-top:22vh;
 
     height: 4.4rem;
 `
@@ -36,7 +36,7 @@ const Text = styled.div`
     font-size: 1.1rem;
 `
 const Address = styled.div`
-    margin-top: 30vh;
+    margin-top: 36vh;
     font-weight: 500;
 `
 
