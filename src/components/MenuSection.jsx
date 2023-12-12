@@ -8,50 +8,122 @@ function MenuSection(){
     const syrups = 'add syrup (caramel, vanilla, mocha) for $0.50';
     const milks = 'available with whole, 2%, almond, and oat milk';
     const disclaimer = 'subject to availability'
+    const S3URL = 'https://gemini-coffee.s3.us-east-2.amazonaws.com/cute-product/'
+    const imgExt = '.png';
 
     const menuOptions = [
         {
-            name: 'cappuccino',
+            name: 'Americano',
             type: 'drink',
-            price: 5.50,
-            description: 'double shot',
-            img: '',
+            price: 4.00,
+            description: 'Espresso and Water',
+            longDescription: 'A classic black coffee made by diluting rich espresso with hot water.',
+            img: 'americano',
         },
         {
-            name: 'latte',
+            name: 'Cappuccino',
             type: 'drink',
-            price: 6.00,
-            description: 'double shot',
-            img: '',
+            price: 4.00,
+            description: 'Espresso, Milk, and Foamy Top',
+            longDescription: 'A balanced espresso and steamed milk with a frothy foam top.',
+            img: 'cappuccino',
         },
         {
-            name: 'americano',
+            name: 'Latte',
             type: 'drink',
             price: 4.50,
-            description: 'double shot',
-            img: '',
+            description: 'Espresso and Steamed Milk',
+            longDescription: 'Espresso meets silky steamed milk for a smooth coffee.',
+            img: 'latte',
         },
         {
-            name: 'greek salad',
-            type: 'food',
-            price: 15.00,
-            description: 'double shot',
-            img: '',
+            name: 'Mocha',
+            type: 'drink',
+            price: 4.50,
+            description: 'Espresso with Chocolate',
+            longDescription: 'Espresso combined with chocolate syrup, topped with cocoa.',
+            img: 'mocha',
         },
         {
-            name: 'bruschetta',
-            type: 'food',
-            price: 12.00,
-            description: 'double shot',
-            img: '',
+            name: 'Cold Brew',
+            type: 'drink',
+            price: 4.50,
+            description: 'Iced Coffee Concentrate',
+            longDescription: 'A strong, smooth cold brew concentrate.',
+            img: 'coldBrew',
         },
         {
-            name: 'avocado toast',
-            type: 'food',
-            price: 7.50,
-            description: 'double shot',
-            img: '',
+            name: 'Chai Latte',
+            type: 'drink',
+            price: 4.50,
+            description: 'Chai blend with Milk',
+            longDescription: 'Spiced black tea blended with creamy milk.',
+            img: 'chaiLatte',
         },
+        {
+            name: 'Caramel Drizzle Latte',
+            type: 'drink',
+            price: 5.00,
+            description: 'Latte drizzled with Caramel',
+            longDescription: 'Espresso layered with milk and sweet caramel drizzle.',
+            img: 'caramelDrizzleLatte',
+        },
+        {
+            name: 'Honey Lavender Latte',
+            type: 'drink',
+            price: 5.00,
+            description: 'Latte with Lavender and Honey',
+            longDescription: 'A blend of espresso, lavender syrup, and honey.',
+            img: 'honeyLavenderLatte',
+        },
+        {
+            name: 'Blackberry Latte',
+            type: 'drink',
+            price: 5.00,
+            description: 'Latte with Blackberry',
+            longDescription: 'Espresso with a burst of blackberry flavor.',
+            img: 'blackberryLatte',
+        },
+        {
+            name: 'The Twins Brew',
+            type: 'drink',
+            price: 5.00,
+            description: 'Cold Brew with Vanilla and Caramel',
+            longDescription: 'Cold brew coffee paired with vanilla cream and caramel syrup.',
+            img: 'theTwinsBrew',
+        },
+        {
+            name: 'White Chocolate Mocha',
+            type: 'drink',
+            price: 5.00,
+            description: 'Espresso with White Chocolate Sauce',
+            longDescription: 'Espresso combined with white chocolate sauce.',
+            img: 'whiteChocolateMocha',
+        },
+        {
+            name: 'Muffins',
+            type: 'food',
+            price: 4.00,
+            description: 'Blueberry or Chocolate Chip Muffin',
+            longDescription: 'Choose from Blueberry or Chocolate Chip large muffins.',
+            img: 'muffin',
+        },
+        {
+            name: 'Banana Bread',
+            type: 'food',
+            price: 3.50,
+            description: 'Banana Bread Slice',
+            longDescription: 'Freshly baked banana bread.',
+            img: 'bananaBread',
+        },
+        {
+            name: 'Cookies',
+            type: 'food',
+            price: 3.50,
+            description: 'Fresh Cookies',
+            longDescription: 'Choose from Chocolate Chip, Double Chocolate, or White Chocolate Macadamia (Two Cookies).',
+            img: 'cookie',
+        }
     ]
 
     return(
@@ -69,7 +141,7 @@ function MenuSection(){
                                     name={item.name}
                                     price={item.price}
                                     description={item.description}
-                                    img={item.img}
+                                    img={S3URL + item.img + imgExt}
                                 />
                             )
                         }
@@ -88,7 +160,7 @@ function MenuSection(){
                                     name={item.name}
                                     price={item.price}
                                     description={item.description}
-                                    img={item.img}
+                                    img={S3URL + item.img + imgExt}
                                 />
                             )
                         }

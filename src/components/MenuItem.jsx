@@ -48,16 +48,18 @@ const DescContainer = styled.div`
 `
 const MenuItemName = styled.div`
     font-weight: 700;
-    font-size: 1.3rem;
+    font-size: 1.1rem;
 `
 const MenuItemDescription = styled.div`
-    font-weight: 200;
-    font-size: .8rem;
+    font-weight: 300;
+    font-size: .7rem;
 `
 const MenuItemPrice = styled.div`
     flex: .2;
     display: flex;
     justify-content: right;
+
+    font-weight: 200;
 
     font-size: .8rem;
 
