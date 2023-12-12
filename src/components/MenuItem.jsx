@@ -38,7 +38,10 @@ function MenuItem({name, price, description, longDesc, img, selected, onClick}){
                     <MenuItemName>{name.toLowerCase()}</MenuItemName>
                     <MenuItemDescription>{description.toLowerCase()}</MenuItemDescription>
                 </DescContainer>
-                <MenuItemPrice><span>{formatCurrency(price)}</span></MenuItemPrice>
+                <InfoContainer>
+                    {filled && <HeartIcon onClick={toggleHeart} width='10px' filled={filled}/>}
+                    <MenuItemPrice><span>{formatCurrency(price)}</span></MenuItemPrice>
+                </InfoContainer>
             </CondesedDescContainer>
             { currentlySel &&
                 <ExtendedDescContainer>
@@ -50,6 +53,15 @@ function MenuItem({name, price, description, longDesc, img, selected, onClick}){
     )
 }
 
+const InfoContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    padding: .75rem;
+    padding-bottom: .5rem;
+`
 const ExtendedDescContainer = styled.div`
     display: flex;
     align-items: center;
@@ -92,6 +104,7 @@ const CondesedDescContainer = styled.div`
 const MenuItemImg = styled.img`
     flex: 1;
     height: 6rem;
+    max-width: auto;
 
     border-radius: ${props=>props.currentlySel ? '1rem 0 0 0' : '1rem 0 0 1rem'};
 
@@ -126,8 +139,6 @@ const MenuItemPrice = styled.div`
     font-size: .8rem;
 
     margin-top: auto;
-    padding-bottom: .75rem;
-    padding-right: .75rem;
 `
 
 
