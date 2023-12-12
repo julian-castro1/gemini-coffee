@@ -17,7 +17,7 @@ const address = '2506 campbell st houston, tx 77093'
 
 
 function App() {
-  const [theme, changeTheme] = useState(lightTheme);
+  const [theme, changeTheme] = useState(darkTheme);
 
   function toggleTheme(){
     console.log("changing theme")
