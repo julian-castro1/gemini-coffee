@@ -13,8 +13,8 @@ function MenuItem({name, price, description, img}){
         <MenuItemContainer>
             <MenuItemImg src={img}/>
             <DescContainer>
-                <MenuItemName>{name}</MenuItemName>
-                <MenuItemDescription>{description}</MenuItemDescription>
+                <MenuItemName>{name.toLowerCase()}</MenuItemName>
+                <MenuItemDescription>{description.toLowerCase()}</MenuItemDescription>
             </DescContainer>
             <MenuItemPrice><span>{formatCurrency(price)}</span></MenuItemPrice>
         </MenuItemContainer>
@@ -44,15 +44,19 @@ const DescContainer = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
+
+    padding-left: 1rem;
 `
 const MenuItemName = styled.div`
     font-weight: 700;
     font-size: 1.1rem;
+    text-align: left;
 `
 const MenuItemDescription = styled.div`
     font-weight: 300;
     font-size: .7rem;
+    text-align: left;
 `
 const MenuItemPrice = styled.div`
     flex: .2;
