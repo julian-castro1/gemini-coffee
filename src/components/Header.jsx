@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import Logo from "../assets/Logo"
 import BurgerIcon from "../assets/BurgerIcon";
@@ -7,7 +7,22 @@ import BurgerIcon from "../assets/BurgerIcon";
 function Header({changeTheme}){
     const [burgerOpen, changeBurgerState] = useState(false);
 
+    useEffect(() => {
+        const closeBurger = (event) => {
+            if(burgerOpen) {
+                toggleBurger();
+            }
+        };
+
+        document.addEventListener('click', closeBurger);
+
+        return () => {
+            document.removeEventListener('click', closeBurger);
+        };
+    }, [burgerOpen]);
+
     function toggleBurger(){
+        event.stopPropagation();
         console.log("toggling burger")
         changeBurgerState(!burgerOpen);
     }
