@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
-function HomeSection({address}){
+function HomeSection({address, id}){
 
     return(
-        <HomeContainer>
+        <HomeContainer id={id}>
             <GeminiText><span>Gemini</span></GeminiText>
             <Text>coffee co</Text>
             <Address> {address} </Address>

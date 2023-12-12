@@ -4,7 +4,7 @@ import SubTitle from "./SubTitle";
 import MenuItem from "./MenuItem";
 import { useState } from "react";
 
-function MenuSection(){
+function MenuSection({id}){
     const [selected, setSelected] = useState('');
 
     function handleClick(name){
@@ -138,7 +138,7 @@ function MenuSection(){
 
 
     return(
-        <MenuContainer>
+        <MenuContainer id={id}>
             <CoffeeSection>
                 <Title text='coffee'/>
                 <SubTitle text={syrups}/>

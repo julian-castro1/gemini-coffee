@@ -2,10 +2,10 @@ import styled from "styled-components";
 import Title from "./Title";
 import SubTitle from "./SubTitle";
 
-function LocationSection(){
+function LocationSection({id}){
 
     return(
-        <LocationContainer>
+        <LocationContainer id={id}>
             <Title text='location'/>
             <SubTitle text='2706 campbell st houston, tx 77026'/>
         </LocationContainer>

@@ -7,8 +7,12 @@ import BurgerIcon from "../assets/BurgerIcon";
 function Header({changeTheme}){
     const [burgerOpen, changeBurgerState] = useState(false);
 
+    const scrollToSection = (id) => {
+        document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+    };
+
     useEffect(() => {
-        const closeBurger = (event) => {
+        const closeBurger = () => {
             if(burgerOpen) {
                 toggleBurger();
             }
@@ -33,12 +37,12 @@ function Header({changeTheme}){
             <BurgerBack burgerOpen={burgerOpen}> <BurgerIcon width='40px' onClick={toggleBurger} burgerOpen={burgerOpen}/> </BurgerBack>
             { burgerOpen &&
                 <MenuContainer>
-                    <MenuItem ><span>home</span></MenuItem>
-                    <MenuItem><span>menu</span></MenuItem>
-                    <MenuItem><span>location</span></MenuItem>
-                    <MenuItem><span>our story</span></MenuItem>
-                    <MenuItem><span>stay connected</span></MenuItem>
-                    <MenuItem><span>contact us</span></MenuItem>
+                    <MenuItem onClick={() => scrollToSection('home')}><span>home</span></MenuItem>
+                    <MenuItem onClick={() => scrollToSection('menu')}><span>menu</span></MenuItem>
+                    <MenuItem onClick={() => scrollToSection('location')}><span>location</span></MenuItem>
+                    <MenuItem onClick={() => scrollToSection('story')}><span>our story</span></MenuItem>
+                    <MenuItem onClick={() => scrollToSection('connected')}><span>stay connected</span></MenuItem>
+                    <MenuItem onClick={() => scrollToSection('contact')}><span>contact us</span></MenuItem>
                     <SignInButton><span>sign in</span></SignInButton>
                 </MenuContainer>
             }

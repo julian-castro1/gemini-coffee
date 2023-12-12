@@ -28,12 +28,12 @@ function App() {
     <ThemeProvider theme={theme}>
       <PageContainer>
         <Header changeTheme={toggleTheme}/>
-        <HomeSection address={address}/>
-        <MenuSection/>
-        <LocationSection/>
-        <StorySection/>
-        <ConnectedSection/>
-        <ContactSection/>
+        <HomeSection id='home' address={address}/>
+        <MenuSection id='menu'/>
+        <LocationSection id='location'/>
+        <StorySection id='story'/>
+        <ConnectedSection id='connected'/>
+        <ContactSection id='contact'/>
       </PageContainer>
     </ThemeProvider>
   )

@@ -3,12 +3,12 @@ import Title from "./Title";
 import usImg from "../assets/couple.png";
 import SubTitle from "./SubTitle";
 
-function StorySection(){
+function StorySection({id}){
 
     const story = 'This coffee shop was founded by Rhianna and Julian. Moving from Austin, we missed the cofffee shop culture and wanted to bring it to our new home. We hope you enjoy our coffee as much as we do!';
 
     return(
-        <StoryContainer>
+        <StoryContainer id={id}>
             <Title text='our story'/>
             {/* <ImageContainer src={usImg}/> */}
             {/* <SubTitle text={story}/> */}

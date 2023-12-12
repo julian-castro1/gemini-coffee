@@ -2,12 +2,12 @@ import styled from "styled-components";
 import Title from "./Title";
 import SubTitle from "./SubTitle";
 
-function ContactSection(){
+function ContactSection({id}){
 
     const note = 'have a question for us? have a recomendation? wish to collaborate? send us a message!'
 
     return(
-        <ContactContainer>
+        <ContactContainer id={id}>
             <Title text='contact us'/>
             <Body>{note}</Body>
             <TextInput type='text' placeholder='send us a message'/>

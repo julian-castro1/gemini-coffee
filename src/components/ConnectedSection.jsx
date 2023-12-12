@@ -1,10 +1,10 @@
 import styled from "styled-components";
 import Title from "./Title";
 
-function ConnectedSection(){
+function ConnectedSection({id}){
 
     return(
-        <ConnectedContainer>
+        <ConnectedContainer id={id}>
             <Title text='stay connected'/>
         </ConnectedContainer>
     )
