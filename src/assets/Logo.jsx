@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { ThemeContext } from 'styled-components';
 
-const Logo = ({ width }) => {
+const Logo = ({ width, onClick}) => {
     const theme = useContext(ThemeContext);
 
   // Adjust these values based on the area of the SVG you want to focus on
@@ -16,6 +16,7 @@ const Logo = ({ width }) => {
       height={width} 
       viewBox={`${viewBoxX} ${viewBoxY} ${viewBoxWidth} ${viewBoxHeight}`} 
       xmlns="http://www.w3.org/2000/svg"  
+      onClick={onClick}
       style={{ 
         fillRule: 'evenodd', 
         clipRule: 'evenodd', 
