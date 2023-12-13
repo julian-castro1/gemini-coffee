@@ -196,24 +196,36 @@ const MenuContainer = styled.div`
     background-color: ${props=>props.theme.back2};
 
     padding-bottom: 1.5rem;
-    /* height: 70vh; */
+
+    @media (min-width: 768px) {
+        padding-left: 10rem;
+        padding-right: 10rem;
+        padding-bottom: 6rem;
+    }
 `
 const CoffeeSection = styled.div`
     display: flex;
     flex-direction: column;
-    align-items: center;
 
-    width: 100%;
+    width: 95%;
 `
 const DrinkItems = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 1.5rem;
+    gap: .5rem;
 
     width: 100%;
 
-    gap: .5rem;
+    @media (min-width: 768px) {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        /* width: 40%; */
+        
+    }
 `
 const BitesSection = styled.div`
     display: flex;

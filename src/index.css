@@ -17,7 +17,9 @@
     src: local('Megrim'), url('./assets/fonts/Megrim-Regular.ttf') format('truetype');
 }
 
-
+.icon:hover{
+  cursor: pointer;
+}
 a {
   font-weight: 500;
   color: #646cff;

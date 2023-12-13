@@ -23,7 +23,7 @@ const HeartIcon = ({ width = '24px', filled = false, onClick }) => {
     };
 
     return (
-        <svg xmlns="http://www.w3.org/2000/svg" height={width} viewBox="-60 -60 550 500" width={width} onClick={onClick}>
+        <svg className='icon' xmlns="http://www.w3.org/2000/svg" height={width} viewBox="-60 -60 550 500" width={width} onClick={onClick}>
           <g transform="matrix(1,0,0,1,-1944.24,-970.441)">
             <g transform="matrix(0.879591,0,0,1,233.618,0)">
                 <path 

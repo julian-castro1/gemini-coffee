@@ -32,7 +32,7 @@ function MenuItem({name, price, description, longDesc, img, selected, onClick}){
     const currentlySel = selected == name;
 
     return(
-        <MenuItemContainer>
+        <MenuItemContainer currentlySel={currentlySel}>
             <CondesedDescContainer currentlySel={currentlySel} onClick={onClick}>
                 <MenuItemImg src={img} currentlySel={currentlySel}/>
                 <DescContainer>
@@ -66,6 +66,7 @@ const InfoContainer = styled.div`
 const ExtendedDescContainer = styled.div`
     display: flex;
     align-items: center;
+    justify-content: space-between;
 
     text-align: left;
     
@@ -85,10 +86,21 @@ const MenuItemContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 
     background-color: ${props=>props.theme.background};
     border-radius: 1rem;
-    width: 90%;
+    width: 100%;
+    max-width: 26rem;
+    
+
+    &:hover{
+        cursor: ${props=>props.currentlySel ? 'auto' : 'pointer'};
+    }
+    @media (min-width: 768px) {
+        width: 40%;
+        min-width: 26rem;
+    }
 `
 const CondesedDescContainer = styled.div`
     display: flex;
@@ -105,7 +117,7 @@ const CondesedDescContainer = styled.div`
 const MenuItemImg = styled.img`
     flex: 1;
     height: 6rem;
-    max-width: auto;
+    /* max-width: auto; */
 
     border-radius: ${props=>props.currentlySel ? '1rem 0 0 0' : '1rem 0 0 1rem'};
 

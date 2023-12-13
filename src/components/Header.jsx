@@ -66,6 +66,10 @@ const SignInButton = styled.div`
     color: ${props=>props.theme.color};
 
     font-weight: 700;
+
+    &:hover{
+        cursor: pointer;
+    }
 `
 const BurgerBack = styled.div`
     background-color: 'none';
@@ -88,7 +92,7 @@ const MenuContainer = styled.div`
     padding: .5rem;
     padding-top: 4.2rem;
 
-    width: 60vw;
+    width: 15rem;
     height: 38vh;
 
     gap: .35rem;
@@ -109,7 +113,9 @@ const MenuItem = styled.div`
 
     font-weight: 700;
 
-
+    &:hover{
+        cursor: pointer;
+    }
 `
 const HeaderContainer = styled.div`
     display: flex;
