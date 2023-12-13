@@ -16,6 +16,7 @@ import StorySection from './components/StorySection';
 import ConnectedSection from './components/ConnectedSection';
 import ContactSection from './components/ContactSection';
 import AuthenticationPopUp from './components/AuthenticationPopUp';
+import Message from './components/Message';
 
 const firebaseConfig = {
     apiKey: "AIzaSyD4XyK5djogDw-buIKCBuEQL7ketLzQHro",
@@ -32,9 +33,6 @@ const analytics = getAnalytics(app);
 
 const auth = getAuth(app);
 
-
-
-
 const address = '2506 campbell st houston, tx 77093'
 
 
@@ -43,6 +41,8 @@ function App() {
   const [loginOpen, changeLoginState] = useState(false);
   const [user, setUser] = useState(null);
   const [burgerOpen, changeBurgerState] = useState(false);
+  const [messageOpen, changeMessageState] = useState(false);
+  const [message, changeMessage] = useState({icon: 'error', message: 'there has been an error'});
 
   useEffect(() => {
     const auth = getAuth();
@@ -64,23 +64,34 @@ function App() {
     console.log("changing theme")
     changeTheme( theme == darkTheme ? lightTheme : darkTheme );
   }
-
   function toggleLogin(){
         console.log("toggling login")
         burgerOpen && toggleBurger();
         changeLoginState(!loginOpen);
   }
-
   function toggleBurger(){
         console.log("toggling burger")
         changeBurgerState(!burgerOpen);
+  }
+  function handleSignOut(){
+        auth.signOut();
+        burgerOpen && toggleBurger();
+        changeMessageContent('success', 'Signed out');
+        toggleMessage();
+  }
+  function toggleMessage(){
+        changeMessageState(!messageOpen);
+  }
+  function changeMessageContent(icon, message){
+        changeMessage({icon: icon, message: message});
   }
 
   return (
     <ThemeProvider theme={theme}>
       <PageContainer>
         { loginOpen && <AuthenticationPopUp closeLogin={toggleLogin}/> }
-        { burgerOpen && <BurgerMenu id='BurgerMenu' toggleBurger={toggleBurger} toggleLogin={toggleLogin}/> }
+        { burgerOpen && <BurgerMenu user={user} signOut={handleSignOut} toggleBurger={toggleBurger} toggleLogin={toggleLogin}/> }
+        { messageOpen && <Message icon={message.icon} message={message.message} closeMessage={toggleMessage}/> }
         <Header user={user} changeTheme={toggleTheme} loginOpen={loginOpen} toggleLogin={toggleLogin} toggleBurger={toggleBurger}/>
         <HomeSection id='home' address={address}/>
         <MenuSection id='menu'/>

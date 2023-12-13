@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { useState, useEffect, useRef } from "react";
 import BurgerIcon from "../assets/BurgerIcon";
 
-function BurgerMenu({toggleBurger, toggleLogin}){
+function BurgerMenu({user, toggleBurger, toggleLogin, signOut}){
 
     const containerRef = useRef();
 
@@ -33,7 +33,10 @@ function BurgerMenu({toggleBurger, toggleLogin}){
             <MenuItem onClick={() => scrollToSection('story')}><span>our story</span></MenuItem>
             <MenuItem onClick={() => scrollToSection('connected')}><span>stay connected</span></MenuItem>
             <MenuItem onClick={() => scrollToSection('contact')}><span>contact us</span></MenuItem>
-            <SignInButton onClick={toggleLogin}><span>sign in</span></SignInButton>
+            {user ?
+                <SignInButton onClick={signOut}><span>sign out</span></SignInButton> :
+                <SignInButton onClick={toggleLogin}><span>sign in</span></SignInButton>
+            }
         </MenuContainer>
     )
 }
