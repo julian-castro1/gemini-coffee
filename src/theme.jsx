@@ -4,6 +4,7 @@ export const lightTheme = {
   color: '#615536',
   colorContrast: '#72633D',
   accentColor: '#e0cfa4',
+  median: '#A38C60',
 };
 
 export const darkTheme = {
@@ -12,5 +13,6 @@ export const darkTheme = {
   color: '#FFF6DE',
   colorContrast: '#F9EDCF',
   accentColor: '#827146',
+  median: '#A38C60',
 };
 

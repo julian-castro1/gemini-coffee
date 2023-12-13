@@ -49,17 +49,18 @@ const MessageContainer = styled.div`
     transform: translate(-50%, -50%);
 
     padding: 1rem;
+    padding-top: 1.6rem;
 
-    gap:.5rem;
+    gap:.75rem;
 `;
 const Icon = styled.img`
-    width: 4rem;
-    height: 4rem;
+    width: 5rem;
+    height: 5rem;
 `;
 const MessageText = styled.div`
     color: ${props=>props.theme.background};
     font-weight: 600;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
 `
 const ConfirmButton = styled.div`
     display: flex;
@@ -73,7 +74,7 @@ const ConfirmButton = styled.div`
 
     font-weight: 700;
     color: ${props=>props.theme.color};
-    font-size: 1rem;
+    font-size: 1.1rem;
 
     &:hover{
         cursor: pointer;

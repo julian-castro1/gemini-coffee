@@ -89,7 +89,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <PageContainer>
-        { loginOpen && <AuthenticationPopUp closeLogin={toggleLogin}/> }
+        { loginOpen && <AuthenticationPopUp closeLogin={toggleLogin} toggleMessage={toggleMessage} changeMessageContent={changeMessageContent}/> }
         { burgerOpen && <BurgerMenu user={user} signOut={handleSignOut} toggleBurger={toggleBurger} toggleLogin={toggleLogin}/> }
         { messageOpen && <Message icon={message.icon} message={message.message} closeMessage={toggleMessage}/> }
         <Header user={user} changeTheme={toggleTheme} loginOpen={loginOpen} toggleLogin={toggleLogin} toggleBurger={toggleBurger}/>

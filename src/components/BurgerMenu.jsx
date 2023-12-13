@@ -35,7 +35,7 @@ function BurgerMenu({user, toggleBurger, toggleLogin, signOut}){
             <MenuItem onClick={() => scrollToSection('contact')}><span>contact us</span></MenuItem>
             {user ?
                 <SignInButton onClick={signOut}><span>sign out</span></SignInButton> :
-                <SignInButton onClick={toggleLogin}><span>sign in</span></SignInButton>
+                <SignInButton onClick={toggleLogin}><span>sign in / up</span></SignInButton>
             }
         </MenuContainer>
     )

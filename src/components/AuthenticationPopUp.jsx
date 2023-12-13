@@ -1,10 +1,12 @@
 import styled from "styled-components";
 import { useState, useEffect, useRef } from "react";
-import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 
-function AuthenticationPopUp({closeLogin}){
+function AuthenticationPopUp({closeLogin, toggleMessage, changeMessageContent}){
     const [email, changeEmail] = useState('');
     const [password, changePassword] = useState('');
+    const [name, changeName] = useState('');
+    const [newUser, changeNewUser] = useState(false);
 
     const auth = getAuth();
     const containerRef = useRef();
@@ -23,41 +25,61 @@ function AuthenticationPopUp({closeLogin}){
         };
     }, [closeLogin]);
 
+    function toggleNewUser(){
+        changeNewUser(!newUser);
+    }
     function signIn(){
         signInWithEmailAndPassword(auth, email, password)
-            .then(() => {})
+            .then((userCredential) => {
+                const name = userCredential.user.displayName || userCredential.user.email;
+                changeMessageContent('success', `Welcome back, ${name}!`);
+                toggleMessage();
+                closeLogin();
+            })
             .catch((error) => {
-                const errorMessage = error.message;
-                alert(errorMessage);
+                const errorMessage = error.code;
+                changeMessageContent('error', errorMessage);
+                toggleMessage();
+                closeLogin();
             });
     }
     function signUp(){
-        createUserWithEmailAndPassword(auth, email, password)
-            .then(() => {})
-            .catch((error) => {
-                const errorMessage = error.message;
-                alert(errorMessage);
-            });
-    }
-
-    function checkUser(){
-        if(auth.currentUser){
-            auth.signOut();
-            alert("Signed out");
+        if(name === ''){
+            alert('Please enter a name');
+            return;
         }
+        createUserWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                const user = userCredential.user;
+                return updateProfile(user, {
+                    displayName: name // Replace with the actual name
+                });
+            })
+            .then(() => {
+                changeMessageContent('success', `Welcome, ${name}!`);
+                toggleMessage();
+                closeLogin();
+            })
+            .catch((error) => {
+                const errorMessage = error.code;
+                changeMessageContent('error', errorMessage);
+                toggleMessage();
+                closeLogin();
+            });
     }
 
     return(
         <PopUpContainer ref={containerRef}>
-            <PopUpHeader onClick={checkUser}>
+            <PopUpHeader>
                 <PopUpTitle>Gemini Coffee</PopUpTitle>
             </PopUpHeader>
             <PopUpBody>
+                {newUser && <PopUpInput type='text' placeholder='Name' value={name} onChange={e => changeName(e.target.value)}/> }
                 <PopUpInput type='email' placeholder='Email' value={email} onChange={e => changeEmail(e.target.value)}/>
                 <PopUpInput type='password' placeholder='Password' value={password} onChange={e => changePassword(e.target.value)}/>
                 <Buttons>
-                    <PopUpButton onClick={signUp}>Sign Up</PopUpButton>
-                    <PopUpButton onClick={signIn}>Sign In</PopUpButton>
+                    <PopUpButton onClick={toggleNewUser} main={false}>{newUser ? 'Go to Login' : 'Create an account'}</PopUpButton>
+                    <PopUpButton onClick={newUser ? signUp : signIn} main={true}>{newUser ? 'Sign Up' : 'Sign In'}</PopUpButton>
                 </Buttons>
             </PopUpBody>
         </PopUpContainer>
@@ -140,6 +162,7 @@ const PopUpButton = styled.div`
     font-weight: 700;
 
     color: ${props=>props.theme.color};
+    background-color: ${props=>props.main ? props.theme.background : props.theme.median};
 
     &:hover{
         cursor: pointer;
