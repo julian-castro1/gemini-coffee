@@ -5,7 +5,7 @@ import SubTitle from "./SubTitle";
 
 function StorySection({id}){
 
-    const story = 'This coffee shop was founded by Rhianna and Julian. Moving from Austin, we missed the cofffee shop culture and wanted to bring it to our new home. We hope you enjoy our coffee as much as we do!';
+    const story = 'Founded by coffee lovers, Rhianna and Julian, Gemini Coffee Company was created to bring craft coffee culture to the Northern Houston area. We strive to deliver more than just great coffee; we aim to create experiences that brighten your day and inspire meaningful moments. Started with a simple espresso machine, we at Gemini look forward to connecting with our community as we continue to grow.';
 
     return(
         <StoryContainer id={id}>
@@ -18,10 +18,12 @@ function StorySection({id}){
 }
 
 const Body = styled.span`
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding-left: .7rem;
+    padding-right: .7rem;
+    padding-bottom: 1.75rem;
     font-size: .8rem;
 
+    
     color: ${props=>props.theme.color};
 
 `
