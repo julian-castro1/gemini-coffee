@@ -1,17 +1,17 @@
 import styled from "styled-components";
 
-function SubTitle({text}){
+function SubTitle({text, textSize='1rem', fontWeight='500'}){
     return(
-        <SubTitleContainer>
+        <SubTitleContainer textSize={textSize} fontWeight={fontWeight}>
             {text}
         </SubTitleContainer>
     )
 }
 
 const SubTitleContainer = styled.h3`
-    /* font-family: 'Megrim', sans-serif; */
-    font-size: 1rem;
-    font-weight: 500;
+    font-family: 'roboto', sans-serif;
+    font-size: ${props=>props.textSize};
+    font-weight: ${props=>props.fontWeight};
 
     color: ${props=>props.theme.color};
 

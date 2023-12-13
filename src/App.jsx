@@ -95,7 +95,7 @@ function App() {
         <Header user={user} changeTheme={toggleTheme} loginOpen={loginOpen} toggleLogin={toggleLogin} toggleBurger={toggleBurger}/>
         <HomeSection id='home' address={address}/>
         <MenuSection id='menu'/>
-        <LocationSection id='location'/>
+        <LocationSection id='location' address={address}/>
         <StorySection id='story'/>
         <ConnectedSection id='connected'/>
         <ContactSection id='contact'/>
