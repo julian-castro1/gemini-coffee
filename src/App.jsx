@@ -1,16 +1,38 @@
 import { ThemeProvider } from 'styled-components';
-import { useState } from 'react'
-import { lightTheme, darkTheme } from './theme'
+import { useState, useEffect } from 'react';
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+import { lightTheme, darkTheme } from './theme';
 import styled from 'styled-components';
 import './App.css'
 
 import Header from './components/Header';
 import HomeSection from './components/HomeSection';
 import MenuSection from './components/MenuSection';
+import BurgerMenu from './components/BurgerMenu';
 import LocationSection from './components/LocationSection';
 import StorySection from './components/StorySection';
 import ConnectedSection from './components/ConnectedSection';
 import ContactSection from './components/ContactSection';
+import AuthenticationPopUp from './components/AuthenticationPopUp';
+
+const firebaseConfig = {
+    apiKey: "AIzaSyD4XyK5djogDw-buIKCBuEQL7ketLzQHro",
+    authDomain: "gemini-coffee-90edd.firebaseapp.com",
+    projectId: "gemini-coffee-90edd",
+    storageBucket: "gemini-coffee-90edd.appspot.com",
+    messagingSenderId: "610589925090",
+    appId: "1:610589925090:web:52cee1a03cbab195a248bb",
+    measurementId: "G-B862S91TQ5"
+};
+
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+
+const auth = getAuth(app);
+
+
 
 
 const address = '2506 campbell st houston, tx 77093'
@@ -18,16 +40,48 @@ const address = '2506 campbell st houston, tx 77093'
 
 function App() {
   const [theme, changeTheme] = useState(darkTheme);
+  const [loginOpen, changeLoginState] = useState(false);
+  const [user, setUser] = useState(null);
+  const [burgerOpen, changeBurgerState] = useState(false);
+
+  useEffect(() => {
+    const auth = getAuth();
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // User is signed in.
+        setUser(user);
+      } else {
+        // No user is signed in.
+        setUser(null);
+      }
+    });
+
+    // Clean up the subscription on unmount
+    return unsubscribe;
+  }, []);
 
   function toggleTheme(){
     console.log("changing theme")
     changeTheme( theme == darkTheme ? lightTheme : darkTheme );
   }
 
+  function toggleLogin(){
+        console.log("toggling login")
+        burgerOpen && toggleBurger();
+        changeLoginState(!loginOpen);
+  }
+
+  function toggleBurger(){
+        console.log("toggling burger")
+        changeBurgerState(!burgerOpen);
+  }
+
   return (
     <ThemeProvider theme={theme}>
       <PageContainer>
-        <Header changeTheme={toggleTheme}/>
+        { loginOpen && <AuthenticationPopUp closeLogin={toggleLogin}/> }
+        { burgerOpen && <BurgerMenu id='BurgerMenu' toggleBurger={toggleBurger} toggleLogin={toggleLogin}/> }
+        <Header user={user} changeTheme={toggleTheme} loginOpen={loginOpen} toggleLogin={toggleLogin} toggleBurger={toggleBurger}/>
         <HomeSection id='home' address={address}/>
         <MenuSection id='menu'/>
         <LocationSection id='location'/>
@@ -44,9 +98,6 @@ const PageContainer = styled.div`
   flex-direction: column;
 
   background-color: ${props=>props.theme.background}
-
-  /* width: 100vw; */
-  /* height: 100%; */
 `
 
 export default App
