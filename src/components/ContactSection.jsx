@@ -4,7 +4,7 @@ import SubTitle from "./SubTitle";
 
 function ContactSection({id}){
 
-    const note = 'have a question for us? have a recomendation? wish to collaborate? send us a message!'
+    const note = 'Questions? Hire us for your next event? Send a message!';
 
     return(
         <ContactContainer id={id}>
@@ -29,7 +29,8 @@ const ContactContainer = styled.div`
     flex-direction: column;
     align-items: center;
     background-color: ${props=>props.theme.back2};
-    
+
+    padding-bottom: 3rem;
 `
 const TextInput = styled.input`
     width: 90%;
