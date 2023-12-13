@@ -6,13 +6,16 @@ import SubTitle from "./SubTitle";
 function StorySection({id}){
 
     const story = 'Founded by coffee lovers, Rhianna and Julian, Gemini Coffee Company was created to bring craft coffee culture to the Northern Houston area. We strive to deliver more than just great coffee; we aim to create experiences that brighten your day and inspire meaningful moments. Started with a simple espresso machine, we at Gemini look forward to connecting with our community as we continue to grow.';
-
+    const signoff = '- Gemini Coffee Company';
+    const bye = '- forever grateful for your support ♡';
     return(
         <StoryContainer id={id}>
             <Title text='our story'/>
             {/* <ImageContainer src={usImg}/> */}
             {/* <SubTitle text={story}/> */}
             <Body>{story}</Body>
+            <Body>{bye}</Body>
+            <Body signoff={true}>{signoff}</Body>
         </StoryContainer>
     )
 }
@@ -20,7 +23,7 @@ function StorySection({id}){
 const Body = styled.span`
     padding-left: .7rem;
     padding-right: .7rem;
-    padding-bottom: 1.75rem;
+    padding-top: ${props=>props.signoff ? '1.5rem' : '0'};
     font-size: .8rem;
 
     
@@ -33,7 +36,7 @@ const StoryContainer = styled.div`
     align-items: center;
 
     padding: 2rem;
-    padding-bottom: 1.5rem;
+    padding-bottom: 2.75rem;
     padding-top: 0rem;
 
     background-color: ${props=>props.theme.back2};
