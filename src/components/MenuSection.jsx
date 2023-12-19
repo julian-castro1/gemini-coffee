@@ -111,11 +111,19 @@ function MenuSection({id}){
         img: 'whiteChocolateMocha',
     },
     {
-        name: 'Muffins',
+        name: 'Chocolate Muffin',
         type: 'food',
         price: 4.00,
-        description: 'Blueberry or Chocolate Chip Muffin',
-        longDescription: 'Whether you are in the mood for a fruity or chocolaty treat, our freshly baked muffins come in blueberry or chocolate chip varieties to satisfy your craving.',
+        description: 'Chocolate Chip Muffin',
+        longDescription: 'Indulge in the rich and comforting taste of our chocolate muffin. Perfect for chocolate lovers seeking a delightful treat',
+        img: 'muffin',
+    },
+    {
+        name: 'Blueberry Muffin',
+        type: 'food',
+        price: 4.00,
+        description: 'Blueberry Muffin',
+        longDescription: 'Enjoy the fresh, tangy sweetness of our blueberry muffin. This golden, crumbly top is a perfect companion for your coffee or as a standalone snack.',
         img: 'muffin',
     },
     {
@@ -133,7 +141,39 @@ function MenuSection({id}){
         description: 'Fresh Cookies',
         longDescription: 'Bite into the comfort of our homemade cookies, available in chocolate chip, double chocolate, or white chocolate macadamia, each offering a rich, melt-in-your-mouth texture.',
         img: 'cookie',
-    }
+    },
+    {
+        name: 'Creme Brulee',
+        type: 'food',
+        price: 7.00,
+        description: 'Crunchy Creme Brulee',
+        longDescription: 'An exquisite dessert of rich, velvety custard topped with a layer of hard caramelized sugar. Our creme brulee is a study in contrasts: the warm, brittle caramel top gives way to the cool, creamy custard beneath. Each spoonful is a decadent delight, combining smoothness and crunch in a classic French dessert.',
+        img: 'cremeBrulee',
+    },
+    {
+        name: 'Yogurt Parfait',
+        type: 'food',
+        price: 5.00,
+        description: 'Yogurt Parfait with strawberries and granola',
+        longDescription: 'A refreshing and healthy option, our yogurt parfait layers smooth, creamy yogurt with fresh, seasonal fruits and a sprinkle of granola for a crunchy finish. It is a harmonious blend of tangy and sweet flavors, complemented by varying textures, making it a perfect light breakfast or a wholesome snack.',
+        img: 'yogurtParfait',
+    },
+    {
+        name: 'Cheese Danish',
+        type: 'food',
+        price: 5.00,
+        description: 'Cheese Danish',
+        longDescription: 'A delightful pastry that combines a flaky, buttery crust with a rich, creamy cheese filling. Our cheese danish is baked to golden perfection, offering a satisfying blend of textures and flavors that is sure to delight any pastry enthusiast. Perfect for pairing with your morning coffee or as a sweet treat any time of day.',
+        img: 'cheeseDanish',
+    },
+    {
+        name: 'Coffee Cake',
+        type: 'food',
+        price: 6.00,
+        description: 'Sweet Coffee Cake',
+        longDescription: 'Our coffee cake is a moist, tender treat with a rich cinnamon swirl and a crunchy streusel topping. It is the perfect balance of sweetness and spice, making it an ideal companion for your coffee break. Each bite offers a delightful mix of soft cake and crispy topping, creating a comforting and indulgent experience.',
+        img: 'coffeeCake',
+    },
 ];
 
 
